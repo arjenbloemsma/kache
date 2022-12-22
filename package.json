@@ -1,14 +1,10 @@
 {
-  "name": "kache",
+  "name": "kitkache",
   "version": "0.3.0",
-  "description": "A basic cache for local storage",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "A basic cache to be used with local storage",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arjenbloemsma/kache.git"
+    "url": "git+https://github.com/arjenbloemsma/kitkache"
   },
   "keywords": [
     "cache",
@@ -19,7 +15,27 @@
   "author": "Arjen Bloemsma",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/arjenbloemsma/kache/issues"
+    "url": "https://github.com/arjenbloemsma/kitkache/issues"
   },
-  "homepage": "https://github.com/arjenbloemsma/kache#readme"
+  "homepage": "https://github.com/arjenbloemsma/kitkache#readme",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified 😱\" && exit 1",
+    "setup": "npm install && npm run validate",
+    "dev": "webpack --config webpack.dev.js --no-watch",
+    "validate": "npm run test && npm run dev",
+    "refresh": "rm -rf node_modules && npm run setup",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "ts-loader": "9.4.2",
+    "terser-webpack-plugin": "5.3.6",
+    "typescript": "4.9.4",
+    "webpack": "5.75.0",
+    "webpack-cli": "5.0.1",
+    "webpack-merge": "5.8.0"
+  }
 }
