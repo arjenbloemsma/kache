@@ -23,6 +23,7 @@
     "strictNullChecks": true,                    /* Enable strict null checks. */
     "strictFunctionTypes": true,                 /* Enable strict checking of function types. */
   },
+  "exclude": ["node_modules"],
   "include": ["src/**/*.ts"],
   "compileOnSave": true
 }
