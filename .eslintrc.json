@@ -1,0 +1,39 @@
+{
+    "root": true,
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": 11,
+      "sourceType": "module"
+    },
+    "plugins": ["@typescript-eslint", "jest"],
+    "env": {
+      "browser": true,
+      "es2020": true
+    },
+    "ignorePatterns": ["*.md", "*.html"],
+    "rules": {
+      "camelcase": "error",
+      "max-params": "error",
+      "max-lines": "error",
+      "max-lines-per-function": "error",
+      "max-nested-callbacks": "error",
+      "no-shadow": "off",
+      "@typescript-eslint/no-shadow": ["error"],
+      "no-plusplus": "error",
+      "no-script-url": "error",
+      "no-var": "error",
+      "prefer-const": "error",
+      "prefer-destructuring": "warn",
+      "prefer-object-spread": "warn",
+      "prefer-spread": "warn",
+      "prefer-template": "error",
+      "keyword-spacing": "warn"
+    }
+  }
+  

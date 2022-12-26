@@ -1,29 +1,34 @@
 {
   "compilerOptions": {
-    "target": "ES2021",
-    "module": "ES2020",
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "forceConsistentCasingInFileNames": true, /* Disallow inconsistently-cased references to the same file. */
     "lib": [
       "DOM",
-      "ES2021",
-      "ScriptHost",
-      "DOM.Iterable"
+      "ES2020",
     ],
-    "allowSyntheticDefaultImports": true,
+    "module": "ES2020",
+    "moduleResolution": "NodeNext",
+    "noImplicitAny": false /* Raise error on expressions and declarations with an implied 'any' type. */,
+    "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
+    "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */
+    "noUnusedLocals": true, /* Report errors on unused locals. */
+    "noUnusedParameters": true, /* Report errors on unused parameters. */
+    "outDir": "./lib",
     "sourceMap": true, /* Generates corresponding '.map' file. */ /* Specify file to store incremental compilation information */
     "removeComments": true, /* Do not emit comments to output. */
-    "moduleResolution": "node",
     "resolveJsonModule": true,
-    "forceConsistentCasingInFileNames": true, /* Disallow inconsistently-cased references to the same file. */
     "strict": true /* Enable all strict type-checking options. */,
-    "noImplicitAny": false /* Raise error on expressions and declarations with an implied 'any' type. */,
-    "noUnusedLocals": true,                      /* Report errors on unused locals. */
-    "noUnusedParameters": true,                  /* Report errors on unused parameters. */
-    "noImplicitReturns": true,                   /* Report error when not all code paths in function return a value. */
-    "noFallthroughCasesInSwitch": true,          /* Report errors for fallthrough cases in switch statement. */
-    "strictNullChecks": true,                    /* Enable strict null checks. */
-    "strictFunctionTypes": true,                 /* Enable strict checking of function types. */
+    "strictNullChecks": true, /* Enable strict null checks. */
+    "strictFunctionTypes": true, /* Enable strict checking of function types. */
+    "target": "ES2020",
   },
-  "exclude": ["node_modules"],
-  "include": ["src/**/*.ts"],
+  "exclude": [
+    "node_modules",
+    "**/__tests__/*"
+  ],
+  "include": [
+    "src/**/*.ts"
+  ],
   "compileOnSave": true
 }
