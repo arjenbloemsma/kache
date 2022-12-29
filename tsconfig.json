@@ -7,8 +7,8 @@
       "DOM",
       "ES2020",
     ],
-    "module": "ES2020",
-    "moduleResolution": "NodeNext",
+    "module": "commonjs",
+    "moduleResolution": "Node",
     "noImplicitAny": false /* Raise error on expressions and declarations with an implied 'any' type. */,
     "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
     "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */

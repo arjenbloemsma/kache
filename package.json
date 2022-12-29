@@ -1,6 +1,6 @@
 {
   "name": "kitkache",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A basic client side cache for in the browser",
   "repository": {
     "type": "git",
