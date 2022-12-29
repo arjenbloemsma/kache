@@ -1,7 +1,7 @@
 {
   "name": "kitkache",
   "version": "0.3.3",
-  "description": "A basic client side cache for in the browser",
+  "description": "A basic, configurable client side cache",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/arjenbloemsma/kitkache"
@@ -12,6 +12,7 @@
     "cache",
     "client",
     "conditional",
+    "configurable",
     "front-end",
     "local",
     "simple",
