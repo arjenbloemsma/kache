@@ -7,10 +7,16 @@
     "url": "git+https://github.com/arjenbloemsma/kitkache"
   },
   "keywords": [
+    "basic",
+    "browser",
     "cache",
+    "client",
+    "conditional",
+    "front-end",
     "local",
+    "simple",
     "storage",
-    "basic"
+    "util"
   ],
   "author": "Arjen Bloemsma",
   "license": "MIT",
