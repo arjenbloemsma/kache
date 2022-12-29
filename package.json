@@ -1,6 +1,6 @@
 {
   "name": "kitkache",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "A basic client side cache for in the browser",
   "repository": {
     "type": "git",
@@ -34,14 +34,14 @@
     "dev": "tsc",
     "lint": "eslint -c .eslintrc.json ./src/**/*.ts",
     "prepare": "npm run build",
-    "prepublishOnly" : "npm run lint && npm test",
-    "preversion" : "npm run lint && npm test",
-    "postversion" : "git push && git push --tags",
+    "prepublishOnly": "npm run lint && npm test",
+    "preversion": "npm run lint && npm test",
+    "postversion": "git push && git push --tags",
     "refresh": "rm -rf node_modules && npm run setup",
     "setup": "npm install && npm run validate",
     "test": "jest",
     "validate": "npm run lint && npm test && npm run dev",
-    "version" : "git add -A src"
+    "version": "git add -A src"
   },
   "devDependencies": {
     "@types/jest": "29.2.4",
