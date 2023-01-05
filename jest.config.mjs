@@ -5,10 +5,9 @@ const __dirname = fileURLToPath(import.meta.url)
 
 export default {
   rootDir: path.join(__dirname, '..'),
-  collectCoverageFrom: ['./src/**/*.ts'],
+  collectCoverageFrom: ['**/src/**/*.ts'],
   preset: 'ts-jest/presets/default-esm',
   testEnvironment: 'jest-environment-jsdom',
-//   setupFilesAfterEnv: ['<rootDir>/test/setup-tests.ts'],
-  testPathIgnorePatterns: ['test-helpers.ts'],
+  testMatch: ['**/src/__tests__/**/*.ts'],
   displayName: '😸',
 }
