@@ -1,18 +1,47 @@
-import {exportedForTesting} from '../kitkache'
+import {kitKache} from '../kitkache'
 
-describe('Time difference', () => {
-  const {timeDiffInSecs} = exportedForTesting
-  test('Should return 127', () => {
+let store = {}
+
+const spiedSetItem = jest
+  .spyOn(globalThis.Storage.prototype, 'setItem')
+  .mockImplementation((key: string, value: unknown) => (store[key] = value))
+
+beforeEach(() => (store = {}))
+
+afterEach(() => spiedSetItem.mockRestore())
+
+describe('Conditional storage', () => {
+  test(`Should store string 'this-is-not-tokyo'`, async () => {
     // arrange
-    const start = 1671966055510
-    const end = 1671966182428
+    const retrieveValue = () => Promise.resolve('this-is-not-tokyo')
     // act
-    const result = timeDiffInSecs(start, end)
+    const result = await kitKache<string>(
+      'key-for-not-tokyo',
+      {
+        expireAfterSecs: 10,
+        storeCondition: value => value !== 'tokyo',
+      },
+      retrieveValue,
+    )
     // assert
-    expect(result).toBe(127)
+    expect(result).toBe('this-is-not-tokyo')
+    expect(spiedSetItem).toBeCalledTimes(1)
   })
 
-  test.todo(
-    'Should be another perfect example of a very descriptive test title of a test to come',
-  )
+  test(`Should not store string 'tokyo'`, async () => {
+    // arrange
+    const retrieveValue = () => Promise.resolve('tokyo')
+    // act
+    const result = await kitKache<string>(
+      'key-for-tokyo',
+      {
+        expireAfterSecs: 10,
+        storeCondition: value => value !== 'tokyo',
+      },
+      retrieveValue,
+    )
+    // assert
+    expect(result).toBe('tokyo')
+    expect(spiedSetItem).toBeCalledTimes(0)
+  })
 })
