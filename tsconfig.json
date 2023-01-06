@@ -7,7 +7,7 @@
       "DOM",
       "ES2020",
     ],
-    "module": "commonjs",
+    "module": "ES2020",
     "moduleResolution": "Node",
     "noImplicitAny": false /* Raise error on expressions and declarations with an implied 'any' type. */,
     "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
