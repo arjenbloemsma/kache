@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/arjenbloemsma/kitkache#readme",
   "type": "module",
-  "main": "lib/index.js",
+  "main": "lib/kitkache.js",
   "files": [
     "lib/**/*"
   ],

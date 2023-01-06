@@ -16,7 +16,7 @@ type KitKacheConfig<T> = {
  * @returns A promise containing the value
  */
 export const kitKache = async <T>(
-  key: any,
+  key: string,
   config: KitKacheConfig<T>,
   objectLoader: () => Promise<T>,
 ): Promise<T> => {
@@ -33,6 +33,7 @@ export const kitKache = async <T>(
     const shouldStoreInCache = config.storeCondition
       ? config.storeCondition(value)
       : true
+      console.info({shouldStoreInCache})
     if (shouldStoreInCache) {
       globalThis.localStorage.setItem(
         key,
@@ -45,8 +46,4 @@ export const kitKache = async <T>(
     return value
   }
   return cachedObject.value
-}
-
-export const exportedForTesting = {
-  timeDiffInSecs,
 }
