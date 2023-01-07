@@ -33,7 +33,6 @@ export const kitKache = async <T>(
     const shouldStoreInCache = config.storeCondition
       ? config.storeCondition(value)
       : true
-      console.info({shouldStoreInCache})
     if (shouldStoreInCache) {
       globalThis.localStorage.setItem(
         key,
