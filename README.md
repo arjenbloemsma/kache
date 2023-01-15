@@ -12,8 +12,19 @@ retrieved by the `objectLoader` callback is passed as an argument to
 
 ## Install
 
+Using npm:
 ```shell
-npm install kitkache
+$ npm install kitkache
+```
+
+Using yarn:
+```shell
+$ yarn add kitkache
+```
+
+Using pnpm:
+```shell
+$ pnpm add kitkache
 ```
 
 ## Usage
@@ -25,7 +36,7 @@ import {kitKache} from 'kitkache'
 
 await kitKache<YourCustomType>(
   'key',
-  {expireAfterSecs: 60 * 60 * 2}, // 2 hours
+  {expireAfterHours: 2},
   () => {
     // logic to retrieve value
     return value
@@ -41,7 +52,7 @@ import {kitKache} from 'kitkache'
 await kitKache<string>(
   'key',
   {
-    expireAfterSecs: 60 * 5, // 5 minutes
+    expireAfterMins: 5,
     storeCondition: value => value !== 'tokyo',
   },
   () => {
@@ -50,5 +61,41 @@ await kitKache<string>(
   },
 )
 ```
+
+## The config object
+
+The configuration to be passed to the kitKache function is simple:
+
+```typescript
+{
+  expireAfterSecs?: number
+  expireAfterMins?: number
+  expireAfterHours?: number
+  storeCondition?: (value: T) => boolean
+}
+```
+
+### Setting the expiration period
+You can define the period after which the cache becomes invalid (and thus a new value will be retrieved) in either seconds, minutes or hours. kitKache will always choose the most specific value. So if seconds, minutes and hours have been provided, only the value for seconds will be used. If both minutes and hours have been provided, the value for minutes will be used as the expiration period.
+
+### Providing a condition
+You can also provide a condition wether a value should be stored in cache or not. The condition is a simple function that takes in a value (kitKache will automatically provide the value that is to be stored) and returns a boolean.
+
+If the function return false, then the value will not be stored in the cache.
+
+Imagine that the `objectLoader` retrieves an object from an external system, but that object should not be stored if the property 'fresh' in that object is set to 'true', then the condition should be something like the following:
+
+```typescript
+(value: externalObject) => !value.fresh
+```
+
+## The object loader
+The `objectLoader` is an async function that returns a value. In it simplest form it could be for instance:
+
+```typescript
+() => Promise.resolve('foo')
+```
+
+In more realistic scenarios it will most likely be a function that retrieves a value from an external system.
 
 [Project site](https://kitkache.bloemium.io)
