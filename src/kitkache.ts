@@ -1,18 +1,16 @@
+import { getExpiryPeriod } from "./configuration"
+import { KitKacheConfig } from "./types"
+
 const timeDiffInSecs = (startTime: number, endTime: number) => {
   const timeDiff = endTime - startTime //in ms
   return Math.round(timeDiff / 1000)
-}
-
-type KitKacheConfig<T> = {
-  expireAfterSecs: number
-  storeCondition?: (value: T) => boolean
 }
 
 /**
  * A simple and configurable cache wrapper around the localStorage API
  * @param key The key under which the object is stored
  * @param config A configuration object which specifies the behavior of the cache
- * @param objectLoader A async function to load the object from the cache
+ * @param objectLoader An async function to load the object from the cache
  * @returns A promise containing the value
  */
 export const kitKache = async <T>(
@@ -27,7 +25,7 @@ export const kitKache = async <T>(
     cachedObject === null ||
     (cachedObject &&
       timeDiffInSecs(cachedObject.timestamp, Date.now()) >
-        config.expireAfterSecs)
+      getExpiryPeriod<T>(config))
   ) {
     const value = await objectLoader()
     const shouldStoreInCache = config.storeCondition
